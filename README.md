@@ -11,35 +11,35 @@ Contract.js is a JavaScript translation of
 If the [mentioned paper] [1] is tl;dr--actually it isn't--following
 steps should be enough to experiment with contract.js.
 
-## 1. Define some predicates
+### 1. Define some predicates
 
-- `function evenp (x) { return (x % 2) === 0 };`
-- `function oddp  (x) { return (x % 2) === 1 };`
+    function evenp (x) { return (x % 2) === 0 };
+    function oddp  (x) { return (x % 2) === 1 };
 
-## 2. Define some contracts
+### 2. Define some contracts
 
-- `oddin_oddout = ho(flat(oddp), flat(oddp));`
-- `oddin_oddout_evenout = ho(ho(flat(oddp), flat(oddp)), flat(evenp));`
+    oddin_oddout = ho(flat(oddp), flat(oddp));
+    oddin_oddout_evenout = ho(ho(flat(oddp), flat(oddp)), flat(evenp));
 
-## 3. Define some guarded procedures
+### 3. Define some guarded procedures
 
 Note: the callee is called "server", the caller "client".
 
-- `p1 = guard(oddin_oddout,
+    p1 = guard(oddin_oddout,
                function (y) { return y },
-               "server", "client);`
-- `p2 = guard(oddin_oddout,
+               "server", "client);
+    p2 = guard(oddin_oddout,
                function (y) { return y * y - y },
-               "server", "client);`
-- `p3 = guard(oddin_oddout_evenout,
+               "server", "client);
+    p3 = guard(oddin_oddout_evenout,
                function (f) { return f(1) }
-               "server", "client);`
+               "server", "client);
 
-## 4. Call the procedures
+### 4. Call the procedures
 
-- `p1(2); // Error: client violates the contract`
-- `p1(3); // Error: server violates the contract`
-- `p1(function (x) { return x + 2 }); // Error: server violates the contract`
+    p1(2); // Error: client violates the contract
+    p1(3); // Error: server violates the contract
+    p1(function (x) { return x + 2 }); // Error: server violates the contract
 
 # Future direction of contract.js?
 
