@@ -27,13 +27,13 @@ Note: the callee is called "server", the caller "client".
 
     p1 = guard(oddin_oddout,
                function (y) { return y },
-               "server", "client);
+               "server", "client");
     p2 = guard(oddin_oddout,
                function (y) { return y * y - y },
-               "server", "client);
+               "server", "client");
     p3 = guard(oddin_oddout_evenout,
-               function (f) { return f(1) }
-               "server", "client);
+               function (f) { return f(1) },
+               "server", "client");
 
 ### 4. Call the procedures
 
