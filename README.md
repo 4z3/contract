@@ -8,9 +8,6 @@ Contract.js is a JavaScript translation of
 
 # How does it work?
 
-If the [mentioned paper] [1] is tl;dr--actually it isn't--following
-steps should be enough to experiment with contract.js.
-
 ### 1. Define some predicates
 
     function evenp (x) { return (x % 2) === 0 };
@@ -38,8 +35,8 @@ Note: the callee is called "server", the caller "client".
 ### 4. Call the procedures
 
     p1(2); // Error: client violates the contract
-    p1(3); // Error: server violates the contract
-    p1(function (x) { return x + 2 }); // Error: server violates the contract
+    p2(3); // Error: server violates the contract
+    p3(function (x) { return x + 2 }); // Error: server violates the contract
 
 # Future direction of contract.js?
 
